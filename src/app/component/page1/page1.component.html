@@ -1,0 +1,32 @@
+<div #content></div>
+<div class="mt-5">
+    <div class="row">
+      <div class="col-md-6 rounded shadow p-3">
+          <form [formGroup]="pageForm">
+              <label for="gender">Gender:</label>
+              <div>
+                  <input id="male" type="radio" value="male" name="gender" formControlName="gender"
+                      (click)="onAddMaleInput()">
+                  <label for="male"  class="form-label mx-2">Male</label>
+              </div>
+    
+              <div>
+                  <input id="female" type="radio" value="female" name="gender"  formControlName="gender"
+                      (click)="onAddFemaleInput()">
+                  <label for="female"  class="form-label mx-2">Female</label>
+              </div>
+    
+              <div class="mb-3" formArrayName="genderInputs">
+                  <ng-container *ngFor="let input of pageForm.get('genderInputs').controls; index as i">
+                      <input type="text" class="form-control mb-3" id="InputA" name="{{i}}"  formControlName="{{i}}" placeholder="Enter about Here">
+                  </ng-container>
+              </div>
+              <div class="mb-3">
+                  <button type="submit" class="btn btn-primary mb-3" (click)="onSubmit()">Submit</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
